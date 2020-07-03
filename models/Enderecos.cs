@@ -1,6 +1,9 @@
-namespace apiMercantil.models
+﻿using System;
+using System.Collections.Generic;
+
+namespace apiMercantil.Models
 {
-    public class Endereco
+    public partial class Enderecos
     {
         public int Id { get; set; }
         public string Numero { get; set; }
@@ -10,5 +13,8 @@ namespace apiMercantil.models
         public string Estado { get; set; }
         public int Cep { get; set; }
         public string Complemento { get; set; }
+        public int? EstabelecimentoId { get; set; }
+
+        public virtual Estabelecimentos Estabelecimento { get; set; }
     }
 }

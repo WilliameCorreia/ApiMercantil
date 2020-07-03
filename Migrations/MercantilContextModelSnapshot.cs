@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using apiMercantil.ContextDB;
+using apiMercantil.Models;
 
 namespace apiMercantil.Migrations
 {
@@ -19,7 +19,7 @@ namespace apiMercantil.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("apiMercantil.models.Categoria", b =>
+            modelBuilder.Entity("apiMercantil.Models.Categorias", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -40,7 +40,7 @@ namespace apiMercantil.Migrations
                     b.ToTable("categorias");
                 });
 
-            modelBuilder.Entity("apiMercantil.models.Endereco", b =>
+            modelBuilder.Entity("apiMercantil.Models.Enderecos", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -78,7 +78,7 @@ namespace apiMercantil.Migrations
                     b.ToTable("enderecos");
                 });
 
-            modelBuilder.Entity("apiMercantil.models.Estabelecimento", b =>
+            modelBuilder.Entity("apiMercantil.Models.Estabelecimentos", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,10 +88,11 @@ namespace apiMercantil.Migrations
                     b.Property<string>("Cnpj")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RazaoSocial")
+                    b.Property<string>("Estabelecimento")
+                        .HasColumnName("_Estabelecimento")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("_Estabelecimento")
+                    b.Property<string>("RazaoSocial")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -99,7 +100,7 @@ namespace apiMercantil.Migrations
                     b.ToTable("estabelecimentos");
                 });
 
-            modelBuilder.Entity("apiMercantil.models.Produto", b =>
+            modelBuilder.Entity("apiMercantil.Models.Produtos", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -124,6 +125,10 @@ namespace apiMercantil.Migrations
                     b.Property<string>("PrecoMedio")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Produto")
+                        .HasColumnName("_Produto")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ProdutoAcento")
                         .HasColumnType("nvarchar(max)");
 
@@ -133,9 +138,6 @@ namespace apiMercantil.Migrations
                     b.Property<string>("Unidade")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("_Produto")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoriaId");
@@ -143,7 +145,108 @@ namespace apiMercantil.Migrations
                     b.ToTable("produtos");
                 });
 
-            modelBuilder.Entity("apiMercantil.models.Telefone", b =>
+            modelBuilder.Entity("apiMercantil.Models.ProdutosDb", b =>
+                {
+                    b.Property<string>("Categoria")
+                        .HasColumnName("categoria")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("CestCodigo")
+                        .HasColumnName("cest_codigo")
+                        .HasColumnType("varchar(255)")
+                        .HasMaxLength(255)
+                        .IsUnicode(false);
+
+                    b.Property<string>("Codbar")
+                        .HasColumnName("codbar")
+                        .HasColumnType("varchar(30)")
+                        .HasMaxLength(30)
+                        .IsUnicode(false);
+
+                    b.Property<string>("Embalagem")
+                        .HasColumnName("embalagem")
+                        .HasColumnType("varchar(50)")
+                        .HasMaxLength(50)
+                        .IsUnicode(false);
+
+                    b.Property<string>("FotoGif")
+                        .HasColumnName("foto_gif")
+                        .HasColumnType("varchar(255)")
+                        .HasMaxLength(255)
+                        .IsUnicode(false);
+
+                    b.Property<string>("FotoPng")
+                        .HasColumnName("foto_png")
+                        .HasColumnType("varchar(255)")
+                        .HasMaxLength(255)
+                        .IsUnicode(false);
+
+                    b.Property<string>("FotoTabloideGif")
+                        .HasColumnName("foto_tabloide_gif")
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("FotoTabloidePng")
+                        .HasColumnName("foto_tabloide_png")
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("ImgGtin")
+                        .HasColumnName("img_gtin")
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Marca")
+                        .HasColumnName("marca")
+                        .HasColumnType("varchar(255)")
+                        .HasMaxLength(255)
+                        .IsUnicode(false);
+
+                    b.Property<string>("Ncm")
+                        .HasColumnName("ncm")
+                        .HasColumnType("varchar(20)")
+                        .HasMaxLength(20)
+                        .IsUnicode(false);
+
+                    b.Property<string>("Peso")
+                        .HasColumnName("peso")
+                        .HasColumnType("varchar(255)")
+                        .HasMaxLength(255)
+                        .IsUnicode(false);
+
+                    b.Property<float?>("PrecoMedio")
+                        .HasColumnName("preco_medio")
+                        .HasColumnType("real");
+
+                    b.Property<string>("Produto")
+                        .HasColumnName("produto")
+                        .HasColumnType("varchar(255)")
+                        .HasMaxLength(255)
+                        .IsUnicode(false);
+
+                    b.Property<string>("ProdutoAcento")
+                        .HasColumnName("produto_acento")
+                        .HasColumnType("varchar(255)")
+                        .HasMaxLength(255)
+                        .IsUnicode(false);
+
+                    b.Property<string>("ProdutoUpper")
+                        .HasColumnName("produto_upper")
+                        .HasColumnType("varchar(255)")
+                        .HasMaxLength(255)
+                        .IsUnicode(false);
+
+                    b.Property<string>("QuantidadeEmbalagem")
+                        .HasColumnName("quantidade_embalagem")
+                        .HasColumnType("varchar(50)")
+                        .HasMaxLength(50)
+                        .IsUnicode(false);
+
+                    b.ToTable("ProdutosDb");
+                });
+
+            modelBuilder.Entity("apiMercantil.Models.Telefones", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -169,24 +272,24 @@ namespace apiMercantil.Migrations
                     b.ToTable("telefones");
                 });
 
-            modelBuilder.Entity("apiMercantil.models.Endereco", b =>
+            modelBuilder.Entity("apiMercantil.Models.Enderecos", b =>
                 {
-                    b.HasOne("apiMercantil.models.Estabelecimento", null)
-                        .WithMany("EndercoId")
+                    b.HasOne("apiMercantil.Models.Estabelecimentos", "Estabelecimento")
+                        .WithMany("Enderecos")
                         .HasForeignKey("EstabelecimentoId");
                 });
 
-            modelBuilder.Entity("apiMercantil.models.Produto", b =>
+            modelBuilder.Entity("apiMercantil.Models.Produtos", b =>
                 {
-                    b.HasOne("apiMercantil.models.Categoria", null)
-                        .WithMany("ProdutoId")
+                    b.HasOne("apiMercantil.Models.Categorias", "Categoria")
+                        .WithMany("Produtos")
                         .HasForeignKey("CategoriaId");
                 });
 
-            modelBuilder.Entity("apiMercantil.models.Telefone", b =>
+            modelBuilder.Entity("apiMercantil.Models.Telefones", b =>
                 {
-                    b.HasOne("apiMercantil.models.Estabelecimento", null)
-                        .WithMany("NumeroId")
+                    b.HasOne("apiMercantil.Models.Estabelecimentos", "Estabelecimento")
+                        .WithMany("Telefones")
                         .HasForeignKey("EstabelecimentoId");
                 });
 #pragma warning restore 612, 618

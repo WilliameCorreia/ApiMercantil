@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using apiMercantil.ContextDB;
+using apiMercantil.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace apiMercantil
