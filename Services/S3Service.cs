@@ -38,7 +38,6 @@ namespace apiMercantil.Services
                     };
                 }
 
-
             }
             catch (AmazonS3Exception e)
             {
