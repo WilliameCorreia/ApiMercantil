@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace apiMercantil.Controllers
 {
 
+    [Route("api/[controller]")]
+    [ApiController]
     public class ProdutosController : ControllerBase
     {
         private readonly ProdutoService _produtosService;
@@ -17,7 +19,6 @@ namespace apiMercantil.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-
             var Lista_produtos = _produtosService.GetAllProdutos();
 
             return Ok(Lista_produtos);
