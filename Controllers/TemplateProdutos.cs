@@ -18,24 +18,26 @@ namespace apiMercantil.Controllers
             _context = context;
         }
 
-        // [HttpGet]
-        // public IActionResult Index(int pagina = 2){
-        //     const int itensPorPagina = 5;
-            
-        //     var produtos = _context.ProdutosDb.ToPagedList(pagina, itensPorPagina);
-
-        //     return Ok(produtos);
-        // }
-        
         [HttpGet]
-        public IActionResult Index(string codebar){
+        public IActionResult GetAllProdutos(int pagina = 1)
+        {
+            const int itensPorPagina = 5;
 
-            var retorno = (from c in _context.ProdutosDb where c.Codbar == codebar select c).FirstOrDefault<ProdutosDb>();
-            
+            var produtos = _context.ProdutosDb.ToPagedList(pagina, itensPorPagina);
+
+            return Ok(produtos);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Index(string id)
+        {
+
+            var produto = (from c in _context.ProdutosDb where c.Codbar == id select c).FirstOrDefault<ProdutosDb>();
+
             // _context.ProdutosDb.Find()
 
 
-            return Ok(retorno);
+            return Ok(produto);
         }
 
     }

@@ -49,7 +49,7 @@ namespace apiMercantil.Controllers
             }
         }
 
-        [HttpDelete("{id")]
+        [HttpDelete("{id}")]
         public ActionResult Delete(int id){
             if(id == 0){
               return BadRequest();
@@ -59,7 +59,7 @@ namespace apiMercantil.Controllers
             }
         }
 
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         public ActionResult Update(int id,[FromBody] Produtos produto){
             if(produto.Id != id || produto == null){
                 return BadRequest();
