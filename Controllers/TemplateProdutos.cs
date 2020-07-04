@@ -18,7 +18,7 @@ namespace apiMercantil.Controllers
             _context = context;
         }
 
-        [HttpGet]
+        [HttpGet("{pagina}")]
         public IActionResult GetAllProdutos(int pagina = 1)
         {
             const int itensPorPagina = 5;
@@ -28,14 +28,29 @@ namespace apiMercantil.Controllers
             return Ok(produtos);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Index(string id)
+        [HttpGet("categoria/{categoria}/{pagina}")]
+        public IActionResult GetAllCategorias(string categoria, int pagina = 1)
+        {
+            const int itensPorPagina = 5;
+
+            var produtos = (from produto in _context.ProdutosDb where produto.Categoria == categoria select produto).ToPagedList(pagina, itensPorPagina);
+
+            return Ok(produtos);
+        }
+
+        [HttpGet("getcategorias/{categoria}")]
+        public IActionResult Categorias(string categoria)
+        {
+            var produtos = (from produto in _context.ProdutosDb where produto.Categoria == categoria select produto);
+
+            return Ok(produtos);
+        }
+
+        [HttpGet("codbar/{codbar}")]
+        public IActionResult Index(string codbar)
         {
 
-            var produto = (from c in _context.ProdutosDb where c.Codbar == id select c).FirstOrDefault<ProdutosDb>();
-
-            // _context.ProdutosDb.Find()
-
+            var produto = (from c in _context.ProdutosDb where c.Codbar == codbar select c).FirstOrDefault<ProdutosDb>();
 
             return Ok(produto);
         }
