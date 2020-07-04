@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using apiMercantil.Models;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace apiMercantil.Controllers
 {
@@ -18,10 +19,13 @@ namespace apiMercantil.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ProdutosDb> Index(){
-            // var lista = _context.ProdutosDb.ToList();
-            return _context.ProdutosDb.ToList();
+        public IActionResult Index(int pagina = 2){
+            const int itensPorPagina = 5;
             
+            var produtos = _context.ProdutosDb.ToPagedList(pagina, itensPorPagina);
+
+            return Ok(produtos);
         }
+
     }
 }

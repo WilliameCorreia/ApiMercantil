@@ -52,3 +52,12 @@ C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\obj\Debug\netcor
 C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\obj\Debug\netcoreapp3.1\apiMercantil.dll
 C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\obj\Debug\netcoreapp3.1\apiMercantil.pdb
 C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\obj\Debug\netcoreapp3.1\apiMercantil.genruntimeconfig.cache
+C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\bin\Debug\netcoreapp3.1\X.PagedList.dll
+C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\bin\Debug\netcoreapp3.1\X.PagedList.Mvc.Core.dll
+C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\bin\Debug\netcoreapp3.1\X.PagedList.Web.Common.dll
+C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\obj\Debug\netcoreapp3.1\apiMercantil.MvcApplicationPartsAssemblyInfo.cs
