@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace apiMercantil.Controllers
 {
-    [Route("api[controller]")]
+    [Route("api/[controller]")]
     public class S3BucketController : ControllerBase
     {
         private readonly IS3Service _service;
