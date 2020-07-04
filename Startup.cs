@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using apiMercantil.Models;
 using Microsoft.EntityFrameworkCore;
+using apiMercantil.Services;
+using Amazon.S3;
 
 namespace apiMercantil
 {
@@ -28,6 +30,8 @@ namespace apiMercantil
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MercantilContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddSingleton<IS3Service, S3Service>();
+            services.AddAWSService<IAmazonS3>();
             services.AddControllers();
         }
 

@@ -61,3 +61,6 @@ C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\bin\Debug\netcor
 C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\bin\Debug\netcoreapp3.1\X.PagedList.Mvc.Core.dll
 C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\bin\Debug\netcoreapp3.1\X.PagedList.Web.Common.dll
 C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\obj\Debug\netcoreapp3.1\apiMercantil.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\bin\Debug\netcoreapp3.1\AWSSDK.Core.dll
+C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\bin\Debug\netcoreapp3.1\AWSSDK.Extensions.NETCore.Setup.dll
+C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\bin\Debug\netcoreapp3.1\AWSSDK.S3.dll

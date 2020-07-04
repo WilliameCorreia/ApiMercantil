@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "gJ5B1/RMqVuYguSjLRZ6D/hc/RVQW1T8+MGwEyeSqV9KaRJ0aZWvalgVqeW1gyLr30Cw+kKfw93nyCOKLFShzQ==",
+  "dgSpecHash": "Lnus9fER0ucu/Y1aFHAZ5M9Q//oAY2A+8B0tM9DOxIx2mSx1e6MwiiJpKF5P//hdnGGJ47Sdlp8VZYekNOtaDQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\willi\\OneDrive\\Documentos\\Desenvolvimento\\apiMercantil\\apiMercantil.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\willi\\.nuget\\packages\\awssdk.core\\3.3.107.20\\awssdk.core.3.3.107.20.nupkg.sha512",
+    "C:\\Users\\willi\\.nuget\\packages\\awssdk.extensions.netcore.setup\\3.3.101\\awssdk.extensions.netcore.setup.3.3.101.nupkg.sha512",
+    "C:\\Users\\willi\\.nuget\\packages\\awssdk.s3\\3.3.111.21\\awssdk.s3.3.3.111.21.nupkg.sha512",
     "C:\\Users\\willi\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\willi\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\willi\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
