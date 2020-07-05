@@ -4,14 +4,15 @@ using System.Threading.Tasks;
 using apiMercantil.Models;
 using Microsoft.AspNetCore.Mvc;
 using X.PagedList;
-
+using apiMercantil.Services;
 namespace apiMercantil.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[Action]")]
     [ApiController]
     public class EstabelecimentoController : ControllerBase
     {
         private readonly MercantilContext _context;
+
 
         public EstabelecimentoController(MercantilContext context)
         {
@@ -19,12 +20,39 @@ namespace apiMercantil.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(int pagina = 2){
-            const int itensPorPagina = 5;
-            
-            var produtos = _context.ProdutosDb.ToPagedList(pagina, itensPorPagina);
+        public IActionResult Index()
+        {
 
-            return Ok(produtos);
+            var estabelecimentos = _context.Estabelecimentos.ToList();
+
+
+            return Ok(estabelecimentos);
+        }
+        public string teste(string cnpj)
+        {
+            var retorno = _context.Estabelecimentos.Where(s => s.Cnpj == cnpj).Select(s => s.Cnpj).Count();
+            if (retorno > 0)
+            {
+                return "false";
+            }
+            else
+            {
+                return "true";
+            }
+
+        }
+        [HttpPost]
+        public void Index(Estabelecimentos estabelecimento)
+        {
+            var existe = _context.Estabelecimentos.Where(s => s.Cnpj == estabelecimento.Cnpj).Select(s => s.Cnpj).Count();
+            if (existe <= 0)
+            {
+                _context.Add(estabelecimento);
+                _context.SaveChanges();
+            }
+
+
+
         }
 
     }

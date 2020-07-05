@@ -7,7 +7,7 @@ using X.PagedList;
 
 namespace apiMercantil.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[Action]")]
     [ApiController]
     public class TemplateProdutosController : ControllerBase
     {
@@ -18,24 +18,20 @@ namespace apiMercantil.Controllers
             _context = context;
         }
 
-        // [HttpGet]
-        // public IActionResult Index(int pagina = 2){
-        //     const int itensPorPagina = 5;
+        [HttpGet]
+        public IActionResult Index(int pagina = 1){
+            const int itensPorPagina = 5;
             
-        //     var produtos = _context.ProdutosDb.ToPagedList(pagina, itensPorPagina);
+            var produtos = _context.ProdutosDb.ToPagedList(pagina, itensPorPagina);
 
-        //     return Ok(produtos);
-        // }
+            return Ok(produtos);
+        }
         
         [HttpGet]
-        public IActionResult Index(string codebar){
+        public IActionResult BuscaCodBar(string codebar){
 
             var retorno = (from c in _context.ProdutosDb where c.Codbar == codebar select c).FirstOrDefault<ProdutosDb>();
-            
-            // _context.ProdutosDb.Find()
-            
-            
-
+                       
             return Ok(retorno);
         }
 
