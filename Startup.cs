@@ -32,6 +32,7 @@ namespace apiMercantil
             services.AddDbContext<MercantilContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddSingleton<IS3Service, S3Service>();
             services.AddAWSService<IAmazonS3>();
+            services.AddTransient<ProdutoService>();
             services.AddControllers();
         }
 

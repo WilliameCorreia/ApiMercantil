@@ -18,21 +18,41 @@ namespace apiMercantil.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public IActionResult Index(int pagina = 1){
+        [HttpGet("{pagina}")]
+        public IActionResult GetAllProdutos(int pagina = 1)
+        {
             const int itensPorPagina = 5;
-            
+
             var produtos = _context.ProdutosDb.ToPagedList(pagina, itensPorPagina);
 
             return Ok(produtos);
         }
-        
-        [HttpGet]
-        public IActionResult BuscaCodBar(string codebar){
 
-            var retorno = (from c in _context.ProdutosDb where c.Codbar == codebar select c).FirstOrDefault<ProdutosDb>();
-                       
-            return Ok(retorno);
+        [HttpGet("categoria/{categoria}/{pagina}")]
+        public IActionResult GetAllCategorias(string categoria, int pagina = 1)
+        {
+            const int itensPorPagina = 5;
+
+            var produtos = (from produto in _context.ProdutosDb where produto.Categoria == categoria select produto).ToPagedList(pagina, itensPorPagina);
+
+            return Ok(produtos);
+        }
+
+        [HttpGet("getcategorias/{categoria}")]
+        public IActionResult Categorias(string categoria)
+        {
+            var produtos = (from produto in _context.ProdutosDb where produto.Categoria == categoria select produto);
+
+            return Ok(produtos);
+        }
+
+        [HttpGet("codbar/{codbar}")]
+        public IActionResult Index(string codbar)
+        {
+
+            var produto = (from c in _context.ProdutosDb where c.Codbar == codbar select c).FirstOrDefault<ProdutosDb>();
+
+            return Ok(produto);
         }
 
     }
