@@ -11,48 +11,65 @@ namespace apiMercantil.Controllers
     [ApiController]
     public class EstabelecimentoController : ControllerBase
     {
-        private readonly MercantilContext _context;
+        private readonly EstabelecimentoService _context;       
 
 
-        public EstabelecimentoController(MercantilContext context)
+        public EstabelecimentoController(EstabelecimentoService context)
         {
             _context = context;
         }
 
         [HttpGet]
-        public IActionResult Index()
-        {
-
-            var estabelecimentos = _context.Estabelecimentos.ToList();
-
+        public IActionResult Index(int? id)
+        {            
+            var estabelecimentos = _context.GetAllEstabelecimentos();
 
             return Ok(estabelecimentos);
         }
-        public string teste(string cnpj)
+
+        [HttpGet("{id}", Name = "getestabelecimento")]
+        public ActionResult getById(int id)
         {
-            var retorno = _context.Estabelecimentos.Where(s => s.Cnpj == cnpj).Select(s => s.Cnpj).Count();
-            if (retorno > 0)
+            var estabelecimento = _context.find(id);
+
+            if (estabelecimento == null)
             {
-                return "false";
+                return BadRequest();
             }
             else
             {
-                return "true";
+                return new ObjectResult(estabelecimento);
             }
-
         }
+        
         [HttpPost]
-        public void Index(Estabelecimentos estabelecimento)
-        {
-            var existe = _context.Estabelecimentos.Where(s => s.Cnpj == estabelecimento.Cnpj).Select(s => s.Cnpj).Count();
-            if (existe <= 0)
-            {
-                _context.Add(estabelecimento);
-                _context.SaveChanges();
+        public IActionResult Create (Estabelecimentos estabelecimento){
+            if(estabelecimento == null){
+                return BadRequest();
+            }else{
+                _context.AddEstabelecimento(estabelecimento);
+                return CreatedAtRoute("getestabelecimento", new{id = estabelecimento.Id}, estabelecimento);
             }
+        }
 
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id){
+            if(id == 0){
+              return BadRequest();
+            }else{
+                _context.delete(id);
+                return Ok();
+            }
+        }
 
-
+        [HttpPut("{id}")]
+        public ActionResult Update(int id,[FromBody] Estabelecimentos estabelecimento){
+            if(estabelecimento.Id != id || estabelecimento == null){
+                return BadRequest();
+            }else{
+                _context.update(id, estabelecimento);
+                 return Ok();
+            }
         }
 
     }

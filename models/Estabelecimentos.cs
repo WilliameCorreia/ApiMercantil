@@ -9,13 +9,14 @@ namespace apiMercantil.Models
         {
             Enderecos = new HashSet<Enderecos>();
             Telefones = new HashSet<Telefones>();
+            Produtos = new HashSet<Produtos>();
         }
 
         public int Id { get; set; }
         public string Estabelecimento { get; set; }
         public string Cnpj { get; set; }
         public string RazaoSocial { get; set; }
-
+        public virtual ICollection<Produtos> Produtos { get; set; }
         public virtual ICollection<Enderecos> Enderecos { get; set; }
         public virtual ICollection<Telefones> Telefones { get; set; }
     }

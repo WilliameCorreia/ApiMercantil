@@ -7,19 +7,19 @@ using X.PagedList;
 
 namespace apiMercantil.Controllers
 {
-    [Route("api/[controller]/[Action]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class TemplateProdutosController : ControllerBase
+    public class ProdutosDbController : ControllerBase
     {
         private readonly MercantilContext _context;
 
-        public TemplateProdutosController(MercantilContext context)
+        public ProdutosDbController(MercantilContext context)
         {
             _context = context;
         }
 
         [HttpGet("{pagina}")]
-        public IActionResult GetAllProdutos(int pagina = 1)
+        public IActionResult GetAllProdutos(int pagina)
         {
             const int itensPorPagina = 5;
 
@@ -29,7 +29,7 @@ namespace apiMercantil.Controllers
         }
 
         [HttpGet("categoria/{categoria}/{pagina}")]
-        public IActionResult GetAllCategorias(string categoria, int pagina = 1)
+        public IActionResult GetAllCategorias(string categoria, int pagina)
         {
             const int itensPorPagina = 5;
 
