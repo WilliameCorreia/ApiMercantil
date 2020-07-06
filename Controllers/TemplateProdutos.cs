@@ -38,13 +38,13 @@ namespace apiMercantil.Controllers
             return Ok(produtos);
         }
 
-        [HttpGet("getcategorias/{categoria}")]
+        /* [HttpGet("getcategorias/{categoria}")]
         public IActionResult Categorias(string categoria)
         {
             var produtos = (from produto in _context.ProdutosDb where produto.Categoria == categoria select produto);
 
             return Ok(produtos);
-        }
+        } */
 
         [HttpGet("codbar/{codbar}")]
         public IActionResult Index(string codbar)
