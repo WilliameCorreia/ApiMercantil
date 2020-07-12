@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using apiMercantil.Models;
 
 namespace apiMercantil.Migrations
 {
     [DbContext(typeof(MercantilContext))]
-    partial class MercantilContextModelSnapshot : ModelSnapshot
+    [Migration("20200712044103_correção")]
+    partial class correção
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

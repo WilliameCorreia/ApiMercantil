@@ -16,6 +16,8 @@ namespace apiMercantil.Models
         public int Quantidade { get; set; }
         public string Preco { get; set; }
         public int? CategoriaId { get; set; }
+        public int? EstabelecimentoId {get; set;}
+        public virtual Estabelecimentos Estabelecimento {get; set;}
         public virtual Categorias Categoria { get; set; }
     }
 }
