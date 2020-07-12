@@ -34,6 +34,7 @@ namespace apiMercantil
             services.AddAWSService<IAmazonS3>();
             services.AddTransient<ProdutoService>();
             services.AddTransient<EstabelecimentoService>();
+            services.AddTransient<CategoriaService>();
             services.AddControllers();
         }
 
