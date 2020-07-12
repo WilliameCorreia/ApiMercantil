@@ -7,7 +7,7 @@ using X.PagedList;
 using apiMercantil.Services;
 namespace apiMercantil.Controllers
 {
-    [Route("api/[controller]/[Action]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class EstabelecimentoController : ControllerBase
     {

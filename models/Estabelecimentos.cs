@@ -16,6 +16,7 @@ namespace apiMercantil.Models
         public string Estabelecimento { get; set; }
         public string Cnpj { get; set; }
         public string RazaoSocial { get; set; }
+        public Boolean Ativo {get; set;}
         public virtual ICollection<Produtos> Produtos { get; set; }
         public virtual ICollection<Enderecos> Enderecos { get; set; }
         public virtual ICollection<Telefones> Telefones { get; set; }
