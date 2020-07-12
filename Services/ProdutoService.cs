@@ -46,7 +46,7 @@ namespace apiMercantil.Services
         {
             var _produto = find(id);
             _produto = produto;
-            _context.Produtos.Update(produto);
+            _context.Produtos.Update(_produto);
             _context.SaveChanges();
         }
     }

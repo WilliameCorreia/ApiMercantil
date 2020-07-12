@@ -34,6 +34,7 @@ namespace apiMercantil
             services.AddAWSService<IAmazonS3>();
             services.AddTransient<ProdutoService>();
             services.AddTransient<EstabelecimentoService>();
+            services.AddTransient<CategoriaService>();
             services.AddControllers();
         }
 
@@ -54,6 +55,12 @@ namespace apiMercantil
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseCors(option => {
+                option.AllowAnyOrigin();
+                option.WithMethods("GET", "POST", "DELETE", "PUT");
+                option.AllowAnyHeader();
             });
         }
     }
