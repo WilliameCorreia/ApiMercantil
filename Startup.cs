@@ -57,11 +57,11 @@ namespace apiMercantil
                 endpoints.MapControllers();
             });
 
-            app.UseCors(option => {
-                option.AllowAnyOrigin();
-                option.WithMethods("GET", "POST", "DELETE", "PUT");
-                option.AllowAnyHeader();
-            });
+            // app.UseCors(option => {
+            //     option.AllowAnyOrigin();
+            //     option.WithMethods("GET", "POST", "DELETE", "PUT");
+            //     option.AllowAnyHeader();
+            // });
         }
     }
 }
