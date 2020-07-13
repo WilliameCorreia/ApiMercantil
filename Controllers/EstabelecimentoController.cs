@@ -27,10 +27,10 @@ namespace apiMercantil.Controllers
             return Ok(estabelecimentos);
         }
 
-        [HttpGet("{id}", Name = "getestabelecimento")]
-        public ActionResult getById(int id)
+        [HttpGet("{token}", Name = "getestabelecimento")]
+        public ActionResult getById(string token)
         {
-            var estabelecimento = _context.find(id);
+            var estabelecimento = _context.findToken(token);
 
             if (estabelecimento == null)
             {
@@ -43,7 +43,7 @@ namespace apiMercantil.Controllers
         }
         
         [HttpPost]
-        public IActionResult Create (Estabelecimentos estabelecimento){
+        public IActionResult Create ([FromBody] Estabelecimentos estabelecimento){
             if(estabelecimento == null){
                 return BadRequest();
             }else{

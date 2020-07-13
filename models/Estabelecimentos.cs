@@ -13,6 +13,8 @@ namespace apiMercantil.Models
         }
 
         public int Id { get; set; }
+        public string Token {get; set;}
+        public string Email {get; set;}
         public string Estabelecimento { get; set; }
         public string Cnpj { get; set; }
         public string RazaoSocial { get; set; }

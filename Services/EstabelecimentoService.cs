@@ -25,6 +25,14 @@ namespace apiMercantil.Services
             return estabelecimentos;
         }
 
+        public Estabelecimentos findToken(string token)
+        {
+
+            var estabelecimentos = _context.Estabelecimentos.FirstOrDefault(item => item.Token == token);
+
+            return estabelecimentos;
+        }
+
         public bool AddEstabelecimento(Estabelecimentos estabelecimento)
         {
             var retorno = _context.Estabelecimentos.Where(s => s.Cnpj == estabelecimento.Cnpj).Select(s => s.Cnpj).Count();
