@@ -2,6 +2,7 @@ using apiMercantil.Models;
 using apiMercantil.Services;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace apiMercantil.Controllers
 {
 
@@ -16,10 +17,18 @@ namespace apiMercantil.Controllers
             _produtosService = produtosService;
         }
 
-        [HttpGet]
-        public ActionResult Index()
+        [HttpGet("{id}/{pagina}")]
+        public ActionResult Index(int id , int pagina)
         {
-            var Lista_produtos = _produtosService.GetAllProdutos();
+            var Lista_produtos = _produtosService.GetAllProdutos(id, pagina);
+
+            return Ok(Lista_produtos);
+        }
+
+        [HttpGet("{categoria}/{id}/{pagina}")]
+        public ActionResult GetAllCategorias(int categoria, int id, int pagina)
+        {
+           var Lista_produtos = _produtosService.GetAllProdutosCategorias(categoria, id, pagina);
 
             return Ok(Lista_produtos);
         }

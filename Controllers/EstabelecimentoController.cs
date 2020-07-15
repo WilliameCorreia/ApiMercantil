@@ -32,14 +32,7 @@ namespace apiMercantil.Controllers
         {
             var estabelecimento = _context.findToken(token);
 
-            if (estabelecimento == null)
-            {
-                return BadRequest();
-            }
-            else
-            {
-                return new ObjectResult(estabelecimento);
-            }
+            return Ok(estabelecimento);
         }
         
         [HttpPost]
