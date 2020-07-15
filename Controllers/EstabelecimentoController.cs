@@ -27,7 +27,7 @@ namespace apiMercantil.Controllers
             return Ok(estabelecimentos);
         }
 
-        [HttpGet("{token}", Name = "getestabelecimento")]
+        [HttpGet("{token}", Name="getestabelecimento")]
         public ActionResult getById(string token)
         {
             var estabelecimento = _context.findToken(token);
@@ -47,8 +47,10 @@ namespace apiMercantil.Controllers
             if(estabelecimento == null){
                 return BadRequest();
             }else{
-                _context.AddEstabelecimento(estabelecimento);
-                return CreatedAtRoute("getestabelecimento", new{id = estabelecimento.Id}, estabelecimento);
+                var resposta =_context.AddEstabelecimento(estabelecimento);
+                
+                return Ok(resposta);
+                
             }
         }
 

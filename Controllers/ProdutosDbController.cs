@@ -49,7 +49,6 @@ namespace apiMercantil.Controllers
         [HttpGet("codbar/{codbar}")]
         public IActionResult Index(string codbar)
         {
-
             var produto = (from c in _context.ProdutosDb where c.Codbar == codbar select c).FirstOrDefault<ProdutosDb>();
 
             return Ok(produto);

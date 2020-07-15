@@ -39,6 +39,19 @@ namespace apiMercantil.Controllers
             }
         }
 
+        [HttpGet("codbar/{codbar}")]
+        public IActionResult getCodBar(string codbar)
+        {
+           var produto = _produtosService.findCodBar(codbar);
+
+           if(produto == null){
+               return Ok(0);
+           }else{
+               return new ObjectResult(produto);
+           }
+
+        }
+
         [HttpPost]
         public ActionResult Create([FromBody] Produtos produto)
         {

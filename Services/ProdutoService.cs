@@ -23,8 +23,14 @@ namespace apiMercantil.Services
 
         public Produtos find(int id)
         {
-
             var produto = _context.Produtos.FirstOrDefault(item => item.Id == id);
+
+            return produto;
+        }
+
+         public Produtos findCodBar(string codBar)
+        {
+            var produto = _context.Produtos.FirstOrDefault(item => item.CodeBar == codBar);
 
             return produto;
         }
