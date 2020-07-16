@@ -25,10 +25,10 @@ namespace apiMercantil.Controllers
             return Ok(Lista_produtos);
         }
 
-        [HttpGet("pesquisar/{palavra}/{pagina}")]
-        public ActionResult PesquisarProduto(string  palavra, int pagina)
+        [HttpGet("pesquisar/{estabelecimentoId}/{categoriaid}/{palavra}/{pagina}")]
+        public ActionResult PesquisarProduto(int estabelecimentoId, int categoriaId, string  palavra, int pagina)
         {
-            var Lista_produtos = _produtosService.Contain(palavra, pagina);
+            var Lista_produtos = _produtosService.Contain(estabelecimentoId, categoriaId, palavra, pagina);
 
             return Ok(Lista_produtos);
         }
