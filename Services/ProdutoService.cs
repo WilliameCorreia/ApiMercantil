@@ -25,6 +25,15 @@ namespace apiMercantil.Services
             return produtos;
         }
 
+        public IEnumerable<Produtos> Contain(string palavra , int pagina)
+        {
+            const int itensPorPagina = 5;
+
+            var produtos = _context.Produtos.Where(produto => produto.Produto.Contains(palavra)).ToPagedList(pagina, itensPorPagina); 
+           
+            return produtos;
+        }
+
         public IEnumerable<Produtos> GetAllProdutosCategorias(int categoriaId, int Estabelecimentoid, int pagina){
 
             const int itensPorPagina = 5;
