@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using apiMercantil.Models;
 
 namespace apiMercantil.Migrations
 {
     [DbContext(typeof(MercantilContext))]
-    partial class MercantilContextModelSnapshot : ModelSnapshot
+    [Migration("20200717000816_altecao_classe_produto")]
+    partial class altecao_classe_produto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,14 +133,17 @@ namespace apiMercantil.Migrations
                     b.Property<string>("Marca")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Oferta")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Preco")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrecoMedio")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Produto")
                         .HasColumnName("_Produto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProdutoAcento")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantidade")
