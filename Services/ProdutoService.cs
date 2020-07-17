@@ -16,7 +16,7 @@ namespace apiMercantil.Services
 
         public IEnumerable<Produtos> GetAllProdutos(int id , int pagina)
         {
-            const int itensPorPagina = 5;
+            const int itensPorPagina = 50;
 
             //var produtos = _context.Produtos.ToList().ToPagedList(pagina, itensPorPagina);
 
@@ -27,7 +27,7 @@ namespace apiMercantil.Services
 
         public IEnumerable<Produtos> Contain( int estabelecimentoId, int categoriaId, string palavra , int pagina)
         {
-            const int itensPorPagina = 5;
+            const int itensPorPagina = 50;
 
             //var produtos = from c in _context.Produtos where c.EstabelecimentoId == estabelecimentoId && c.CategoriaId == categoriaId select c;
             
@@ -79,8 +79,8 @@ namespace apiMercantil.Services
         {
             var _produto = find(id);
             _produto = produto;
-            _context.Produtos.Update(_produto);
-            _context.SaveChanges();
+            //_context.Produtos.Update(_produto);
+            //_context.SaveChanges();
         }
     }
 }

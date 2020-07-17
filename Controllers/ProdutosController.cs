@@ -92,7 +92,7 @@ namespace apiMercantil.Controllers
 
         [HttpPut("{id}")]
         public ActionResult Update(int id,[FromBody] Produtos produto){
-            if(produto.Id != id || produto == null){
+            if(produto == null){
                 return BadRequest();
             }else{
                 _produtosService.update(id, produto);
