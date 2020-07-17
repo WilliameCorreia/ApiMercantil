@@ -78,9 +78,14 @@ namespace apiMercantil.Services
         public void update(int id, Produtos produto)
         {
             var _produto = find(id);
-            _produto = produto;
-            //_context.Produtos.Update(_produto);
-            //_context.SaveChanges();
+            _produto.Produto = produto.Produto;
+            _produto.CodeBar = produto.CodeBar;
+            _produto.Preco = produto.Preco;
+            _produto.Quantidade = produto.Quantidade;
+            _produto.CategoriaId = produto.CategoriaId;
+            _produto.EstabelecimentoId = produto.EstabelecimentoId;
+            _context.Produtos.Update(_produto);
+            _context.SaveChanges();
         }
     }
 }
