@@ -57,9 +57,9 @@ namespace apiMercantil.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public ActionResult Update(int id,[FromBody] Estabelecimentos estabelecimento){
-            if(estabelecimento.Id != id || estabelecimento == null){
+            if( estabelecimento == null){
                 return BadRequest();
             }else{
                 _context.update(id, estabelecimento);
