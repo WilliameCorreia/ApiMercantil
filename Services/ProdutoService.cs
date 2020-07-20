@@ -14,13 +14,13 @@ namespace apiMercantil.Services
             _context = context;
         }
 
-        public IEnumerable<Produtos> GetAllProdutos(int id , int pagina)
+        public IEnumerable<Produtos> GetAllProdutos(int EstabelecimentoId , int pagina)
         {
             const int itensPorPagina = 50;
 
             //var produtos = _context.Produtos.ToList().ToPagedList(pagina, itensPorPagina);
 
-            var produtos = _context.Produtos.Where(produto => produto.EstabelecimentoId == id).ToPagedList(pagina, itensPorPagina);
+            var produtos = _context.Produtos.Where(produto => produto.EstabelecimentoId == EstabelecimentoId).ToPagedList(pagina, itensPorPagina);
 
             return produtos;
         }
