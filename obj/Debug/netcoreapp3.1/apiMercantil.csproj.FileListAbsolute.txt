@@ -130,3 +130,4 @@ C:\Users\joaomarcos\Documents\sistemas\ApiMercantil\obj\Debug\netcoreapp3.1\stat
 C:\Users\joaomarcos\Documents\sistemas\ApiMercantil\obj\Debug\netcoreapp3.1\apiMercantil.dll
 C:\Users\joaomarcos\Documents\sistemas\ApiMercantil\obj\Debug\netcoreapp3.1\apiMercantil.pdb
 C:\Users\joaomarcos\Documents\sistemas\ApiMercantil\obj\Debug\netcoreapp3.1\apiMercantil.genruntimeconfig.cache
+C:\Users\willi\OneDrive\Documentos\Desenvolvimento\apiMercantil\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll

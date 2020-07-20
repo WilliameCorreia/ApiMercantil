@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using apiMercantil.Models;
+using Microsoft.EntityFrameworkCore;
 using X.PagedList;
 
 namespace apiMercantil.Services
@@ -31,7 +32,7 @@ namespace apiMercantil.Services
 
             //var produtos = from c in _context.Produtos where c.EstabelecimentoId == estabelecimentoId && c.CategoriaId == categoriaId select c;
             
-            var produtos = _context.Produtos.Where(
+            var produtos = _context.Produtos.Include(x => x.Estabelecimento).Include(y => y.Categoria).Where(
                 produto => produto.EstabelecimentoId == estabelecimentoId && produto.CategoriaId == categoriaId && produto.Produto.Contains(palavra)).ToPagedList(pagina, itensPorPagina);
            
             return produtos;
@@ -41,7 +42,7 @@ namespace apiMercantil.Services
 
             const int itensPorPagina = 5;
 
-            var produtos = _context.Produtos.Where(
+            var produtos = _context.Produtos.Include(x => x.Estabelecimento).Include(y => y.Categoria).Where(
                 produto => produto.EstabelecimentoId == Estabelecimentoid && produto.CategoriaId == categoriaId).ToPagedList(pagina, itensPorPagina);
 
             return produtos;
@@ -50,7 +51,7 @@ namespace apiMercantil.Services
 
         public Produtos find(int id)
         {
-            var produto = _context.Produtos.FirstOrDefault(item => item.Id == id);
+            var produto = _context.Produtos.Include(x => x.Estabelecimento).Include(y => y.Categoria).FirstOrDefault(item => item.Id == id);
 
             return produto;
         }
@@ -77,7 +78,7 @@ namespace apiMercantil.Services
 
         public void update(int id, Produtos produto)
         {
-            var _produto = find(id);
+            var _produto = find(produto.Id);
             _produto.Produto = produto.Produto;
             _produto.CodeBar = produto.CodeBar;
             _produto.Preco = produto.Preco;
