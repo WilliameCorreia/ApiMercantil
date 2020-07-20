@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using apiMercantil.Services;
 using Amazon.S3;
 
+
 namespace apiMercantil
 {
     public class Startup
@@ -35,6 +36,7 @@ namespace apiMercantil
             services.AddTransient<ProdutoService>();
             services.AddTransient<EstabelecimentoService>();
             services.AddTransient<CategoriaService>();
+            services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddControllers();
         }
 

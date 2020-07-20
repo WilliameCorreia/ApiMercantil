@@ -17,10 +17,10 @@ namespace apiMercantil.Controllers
             _produtosService = produtosService;
         }
 
-        [HttpGet("{id}/{pagina}")]
-        public ActionResult Index(int id , int pagina)
+        [HttpGet("{EstabelecimentoId}/{pagina}")]
+        public ActionResult Index(int EstabelecimentoId , int pagina)
         {
-            var Lista_produtos = _produtosService.GetAllProdutos(id, pagina);
+            var Lista_produtos = _produtosService.GetAllProdutos(EstabelecimentoId, pagina);
 
             return Ok(Lista_produtos);
         }
@@ -90,12 +90,12 @@ namespace apiMercantil.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public ActionResult Update(int id,[FromBody] Produtos produto){
-            if(produto.Id != id || produto == null){
+        [HttpPut]
+        public ActionResult Update([FromBody] Produtos produto){
+            if(produto == null){
                 return BadRequest();
             }else{
-                _produtosService.update(id, produto);
+                _produtosService.update(produto.Id, produto);
                  return Ok();
             }
         }
