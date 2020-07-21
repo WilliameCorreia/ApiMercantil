@@ -40,7 +40,7 @@ namespace apiMercantil.Services
 
         public IEnumerable<Produtos> GetAllProdutosCategorias(int categoriaId, int Estabelecimentoid, int pagina){
 
-            const int itensPorPagina = 5;
+            const int itensPorPagina = 50;
 
             var produtos = _context.Produtos.Include(x => x.Estabelecimento).Include(y => y.Categoria).Where(
                 produto => produto.EstabelecimentoId == Estabelecimentoid && produto.CategoriaId == categoriaId).ToPagedList(pagina, itensPorPagina);
