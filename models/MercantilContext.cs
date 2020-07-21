@@ -32,18 +32,7 @@ namespace apiMercantil.Models
             modelBuilder.Entity<Categorias>(entity =>
             {
                 entity.ToTable("categorias");
-            });
-
-            modelBuilder.Entity<Enderecos>(entity =>
-            {
-                entity.ToTable("enderecos");
-
-                entity.HasIndex(e => e.EstabelecimentoId);
-
-                entity.HasOne(d => d.Estabelecimento)
-                    .WithMany(p => p.Enderecos)
-                    .HasForeignKey(d => d.EstabelecimentoId);
-            });
+            });           
 
             modelBuilder.Entity<Estabelecimentos>(entity =>
             {
@@ -146,17 +135,6 @@ namespace apiMercantil.Models
                     .HasColumnName("quantidade_embalagem")
                     .HasMaxLength(50)
                     .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<Telefones>(entity =>
-            {
-                entity.ToTable("telefones");
-
-                entity.HasIndex(e => e.EstabelecimentoId);
-
-                entity.HasOne(d => d.Estabelecimento)
-                    .WithMany(p => p.Telefones)
-                    .HasForeignKey(d => d.EstabelecimentoId);
             });
 
             OnModelCreatingPartial(modelBuilder);

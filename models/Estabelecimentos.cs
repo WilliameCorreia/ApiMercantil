@@ -8,8 +8,6 @@ namespace apiMercantil.Models
     {
         public Estabelecimentos()
         {
-            Enderecos = new HashSet<Enderecos>();
-            Telefones = new HashSet<Telefones>();
             Produtos = new HashSet<Produtos>();
         }
 
@@ -20,8 +18,8 @@ namespace apiMercantil.Models
         public string Cnpj { get; set; }
         public string RazaoSocial { get; set; }
         public Boolean Ativo {get; set;}
+        public string Telefones { get; set; }
+        public string Enderecos { get; set; }
         public virtual ICollection<Produtos> Produtos { get; set; }
-        public virtual ICollection<Enderecos> Enderecos { get; set; }
-        public virtual ICollection<Telefones> Telefones { get; set; }
     }
 }

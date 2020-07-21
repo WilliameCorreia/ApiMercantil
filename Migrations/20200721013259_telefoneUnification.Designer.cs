@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using apiMercantil.Models;
 
 namespace apiMercantil.Migrations
 {
     [DbContext(typeof(MercantilContext))]
-    partial class MercantilContextModelSnapshot : ModelSnapshot
+    [Migration("20200721013259_telefoneUnification")]
+    partial class telefoneUnification
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,7 +77,7 @@ namespace apiMercantil.Migrations
 
                     b.HasIndex("EstabelecimentoId");
 
-                    b.ToTable("Enderecos");
+                    b.ToTable("enderecos");
                 });
 
             modelBuilder.Entity("apiMercantil.Models.Estabelecimentos", b =>
@@ -92,9 +94,6 @@ namespace apiMercantil.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Enderecos")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estabelecimento")
@@ -292,7 +291,7 @@ namespace apiMercantil.Migrations
             modelBuilder.Entity("apiMercantil.Models.Enderecos", b =>
                 {
                     b.HasOne("apiMercantil.Models.Estabelecimentos", "Estabelecimento")
-                        .WithMany()
+                        .WithMany("Enderecos")
                         .HasForeignKey("EstabelecimentoId");
                 });
 
