@@ -56,10 +56,10 @@ namespace apiMercantil.Controllers
             }
         }
 
-        [HttpGet("codbar/{codbar}")]
-        public IActionResult getCodBar(string codbar)
+        [HttpGet("codbar/{codbar}/{estabelecimentoId}")]
+        public IActionResult getCodBar(string codbar, int estabelecimentoId )
         {
-           var produto = _produtosService.findCodBar(codbar);
+           var produto = _produtosService.findCodBar(codbar, estabelecimentoId);
 
            if(produto == null){
                return Ok(0);

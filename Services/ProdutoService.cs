@@ -56,9 +56,9 @@ namespace apiMercantil.Services
             return produto;
         }
 
-         public Produtos findCodBar(string codBar)
+         public Produtos findCodBar(string codBar, int estabelecimentoId)
         {
-            var produto = _context.Produtos.FirstOrDefault(item => item.CodeBar == codBar);
+            var produto = _context.Produtos.FirstOrDefault(item => item.EstabelecimentoId == estabelecimentoId && item.CodeBar == codBar);
 
             return produto;
         }
