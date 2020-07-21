@@ -58,11 +58,11 @@ namespace apiMercantil.Controllers
         }
 
         [HttpPut]
-        public ActionResult Update(int id,[FromBody] Estabelecimentos estabelecimento){
+        public ActionResult Update([FromBody] Estabelecimentos estabelecimento){
             if( estabelecimento == null){
                 return BadRequest();
             }else{
-                _context.update(id, estabelecimento);
+                _context.update(estabelecimento.Id, estabelecimento);
                  return Ok();
             }
         }

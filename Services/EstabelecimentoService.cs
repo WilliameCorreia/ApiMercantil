@@ -55,8 +55,13 @@ namespace apiMercantil.Services
         public void update(int id, Estabelecimentos estabelecimento)
         {
             var _estabelecimento = find(id);
-            _estabelecimento = estabelecimento;
-            _context.Estabelecimentos.Update(estabelecimento);
+            _estabelecimento.Token = estabelecimento.Token;
+            _estabelecimento.Email = estabelecimento.Email;
+            _estabelecimento.Estabelecimento = estabelecimento.Estabelecimento;
+            _estabelecimento.Cnpj = estabelecimento.Cnpj;
+            _estabelecimento.RazaoSocial = estabelecimento.RazaoSocial;
+            _estabelecimento.Ativo = estabelecimento.Ativo;
+            _context.Estabelecimentos.Update(_estabelecimento);
             _context.SaveChanges();
         }
     }
