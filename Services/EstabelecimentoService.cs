@@ -61,6 +61,8 @@ namespace apiMercantil.Services
             _estabelecimento.Cnpj = estabelecimento.Cnpj;
             _estabelecimento.RazaoSocial = estabelecimento.RazaoSocial;
             _estabelecimento.Ativo = estabelecimento.Ativo;
+            _estabelecimento.Telefones = estabelecimento.Telefones;
+            _estabelecimento.Enderecos = estabelecimento.Enderecos;
             _context.Estabelecimentos.Update(_estabelecimento);
             _context.SaveChanges();
         }
