@@ -63,7 +63,7 @@ namespace apiMercantil.Controllers
                 return BadRequest();
             }else{
                 _context.update(estabelecimento.Id, estabelecimento);
-                 return Ok();
+                 return Ok(estabelecimento);
             }
         }
 
