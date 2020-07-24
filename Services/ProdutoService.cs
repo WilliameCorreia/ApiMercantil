@@ -10,12 +10,18 @@ namespace apiMercantil.Services
     {
         private readonly MercantilContext _context;
 
-        public ProdutoService(MercantilContext context)
+        private readonly CategoriaService _categoriaService;
+
+        private readonly ProdutoDBSevice _produtoDBService;
+
+        public ProdutoService(MercantilContext context, CategoriaService categoriaService, ProdutoDBSevice produtoDBSevice)
         {
             _context = context;
+            _categoriaService = categoriaService;
+            _produtoDBService = produtoDBSevice;
         }
 
-        public IEnumerable<Produtos> GetAllProdutos(int EstabelecimentoId , int pagina)
+        public IEnumerable<Produtos> GetAllProdutos(int EstabelecimentoId, int pagina)
         {
             const int itensPorPagina = 50;
 
@@ -26,19 +32,20 @@ namespace apiMercantil.Services
             return produtos;
         }
 
-        public IEnumerable<Produtos> Contain( int estabelecimentoId, int categoriaId, string palavra , int pagina)
+        public IEnumerable<Produtos> Contain(int estabelecimentoId, int categoriaId, string palavra, int pagina)
         {
             const int itensPorPagina = 50;
 
             //var produtos = from c in _context.Produtos where c.EstabelecimentoId == estabelecimentoId && c.CategoriaId == categoriaId select c;
-            
+
             var produtos = _context.Produtos.Include(x => x.Estabelecimento).Include(y => y.Categoria).Where(
                 produto => produto.EstabelecimentoId == estabelecimentoId && produto.CategoriaId == categoriaId && produto.Produto.Contains(palavra)).ToPagedList(pagina, itensPorPagina);
-           
+
             return produtos;
         }
 
-        public IEnumerable<Produtos> GetAllProdutosCategorias(int categoriaId, int Estabelecimentoid, int pagina){
+        public IEnumerable<Produtos> GetAllProdutosCategorias(int categoriaId, int Estabelecimentoid, int pagina)
+        {
 
             const int itensPorPagina = 50;
 
@@ -56,7 +63,7 @@ namespace apiMercantil.Services
             return produto;
         }
 
-         public Produtos findCodBar(string codBar, int estabelecimentoId)
+        public Produtos findCodBar(string codBar, int estabelecimentoId)
         {
             var produto = _context.Produtos.FirstOrDefault(item => item.EstabelecimentoId == estabelecimentoId && item.CodeBar == codBar);
 
@@ -65,6 +72,20 @@ namespace apiMercantil.Services
 
         public void AddProduto(Produtos produto)
         {
+            Categorias categoria = _categoriaService.find(produto.CategoriaId.Value);
+
+            ProdutosDb produtosDb = new ProdutosDb();
+
+            if (_produtoDBService.GetCodBar(produto.CodeBar))
+            {
+                produtosDb.Codbar = produto.CodeBar;
+                produtosDb.Produto = produto.Produto;
+                produtosDb.FotoPng = produto.FotoPng;
+                produtosDb.Categoria = categoria.NomeBusca;
+
+                _context.ProdutosDb.Add(produtosDb);
+            }
+
             _context.Produtos.Add(produto);
             _context.SaveChanges();
         }

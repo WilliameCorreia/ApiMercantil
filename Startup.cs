@@ -36,6 +36,7 @@ namespace apiMercantil
             services.AddTransient<ProdutoService>();
             services.AddTransient<EstabelecimentoService>();
             services.AddTransient<CategoriaService>();
+            services.AddTransient<ProdutoDBSevice>();
             services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddControllers();
         }

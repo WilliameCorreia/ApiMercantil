@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace apiMercantil.Models
 {
     public partial class ProdutosDb
     {
+        [Key]
         public string Codbar { get; set; }
         public string Produto { get; set; }
         public string ProdutoUpper { get; set; }

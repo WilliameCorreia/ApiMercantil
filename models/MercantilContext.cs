@@ -56,8 +56,6 @@ namespace apiMercantil.Models
 
             modelBuilder.Entity<ProdutosDb>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.Property(e => e.Categoria)
                     .HasColumnName("categoria")
                     .HasMaxLength(100);
